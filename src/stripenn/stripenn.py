@@ -61,7 +61,7 @@ def addlog(cool, out, norm, chrom, canny, minL, maxW, maxpixel, numcores, pvalue
     outfile.close()
     
     
-def compute(cool, out, norm, chrom, canny, minL, maxW, maxpixel, numcores, pvalue, mask, slow, bfilter):
+def compute(cool, out, norm, chrom, canny, minL, maxW, maxpixel, numcores, pvalue, mask, slow, bfilter, seed):
     np.seterr(divide='ignore', invalid='ignore')
     t_start = time.time()
     if out[-1] != '/':
@@ -117,7 +117,7 @@ def compute(cool, out, norm, chrom, canny, minL, maxW, maxpixel, numcores, pvalu
 
     unbalLib = Lib.matrix(balance=norm)
     resol = Lib.binsize
-    obj = getStripe.getStripe(unbalLib, resol, minH, maxW, canny, all_chromnames, chromnames, all_chromsizes, chromsizes, core, bfilter)
+    obj = getStripe.getStripe(unbalLib, resol, minH, maxW, canny, all_chromnames, chromnames, all_chromsizes, chromsizes, core, bfilter, seed)
     print('1. Maximum pixel value calculation ...')
     if slow:
         print("1.1 Slowly estimating Maximum pixel values...")
