@@ -43,8 +43,8 @@ dependencies = [
 [project.optional-dependencies]
 test = ["pytest>=5.2"]
 
-[tool.setuptools.packages]
-find = {}
+[tool.setuptools]
+package-dir = {"" = "src/stripenn"}
 
 [project.scripts]
-stripenn = "src.stripenn.cli:main"
+stripenn = "cli:main"
