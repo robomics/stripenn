@@ -3,15 +3,14 @@ import pandas as pd
 import math
 import matplotlib
 import cv2 as cv
-from src import stats
-from src import ImageProcessing
+from stripenn import stats
+from stripenn import ImageProcessing
+
 matplotlib.use('pdf')
-import matplotlib.pyplot as plt
 import statistics as stat
 from skimage import feature
 import time
 import random
-from scipy import signal
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
@@ -845,7 +844,9 @@ class getStripe:
                     if type(results[n]) == int:
                         pass
                     else:
-                        result = result.append(results[n])
+            
+                        result=pd.concat([result, results[n]]) 
+                        #result = result.append(results[n])
 
             res = self.RemoveRedundant(result, 'size')
             res = res.reset_index(drop=True)
